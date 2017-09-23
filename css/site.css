@@ -1,0 +1,91 @@
+body {
+  background-color: #3248dc;
+  color: #fff;
+  margin: 2em 3em;
+
+  font-family: 'Oxygen Mono', monospace;
+}
+
+/* link colors */
+a,
+a:hover,
+a:active,
+.btn.btn-link {
+  color: #fff;
+  text-decoration: underline;
+}
+/* buttons */
+.btn {
+  border-color: #fff;
+}
+.btn:focus, .btn:hover {
+  border-color: #fff;
+  background-color: #4f69ff;
+  color: #fff;
+}
+
+.btn,
+.btn.btn-link {
+  background-color: inherit;
+  border-radius: 0;
+  color: #fff;
+  padding: .45rem .8rem;
+  height: auto;
+}
+.btn.btn-link.active, .btn.btn-link:active, .btn.btn-link:focus, .btn.btn-link:hover {
+  color: #fff;
+}
+.btn.btn-primary {
+  border-color: #fff;
+  background-color: #fff;
+  color: #3248dc;
+}
+.btn.btn-primary:focus, .btn.btn-primary:hover {
+  border-color: #fff;
+  background-color: #dcdfef;
+  color: #3248dc;
+}
+
+/* top navbar */
+header.navbar {
+}
+header.navbar .navbar-brand {
+  font-size: 1.6em;
+  margin-right: 2em;
+}
+header.navbar .btn {
+  font-size: 1.1em;
+}
+
+.navbar-divider {
+  height: 1px;
+  background-color: #7e9bd3;
+  margin: 2em -3em; /* same as body */
+  margin-bottom: 4em;
+}
+
+
+.box {
+  margin-bottom: 4em;
+}
+
+.vspace {
+  margin-top: 3em;
+}
+
+/* menu */
+.menu, .empty {
+  background-color: inherit;
+  color: inherit;
+}
+/* menu */
+.menu {
+  background-color: inherit;
+}
+
+/* forms */
+.form-input,
+.form-select {
+  border-radius: 0;
+  color: #333;
+}

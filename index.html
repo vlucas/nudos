@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>NuDOS</title>
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen+Mono" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="navbar">
+      <section class="navbar-section">
+        <a href="#" class="navbar-brand mr-2">NuDOS</a>
+      </section>
+      <section class="navbar-section">
+        <a href="#" class="btn btn-link">Home</a>
+        <a href="#" class="btn btn-link">Docs</a>
+        <a href="#" class="btn btn-link">Twitter</a>
+        <a href="#" class="btn btn-link">GitHub</a>
+      </section>
+    </header>
+  </div>
+  <div class="navbar-divider"></div>
+
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <div class="box">
+          <h2>Box Title</h2>
+          <div class="box-body">
+            <p>Some stuff here</p>
+            <p>Something with a <a href="https://www.google.com">link to google.com</a> here</p>
+            <p>Some stuff here</p>
+            <h3>Another Sub-Heading Here</h3>
+            <p>What about a button link? <a href="https://www.google.com" class="button primary">link to google.com</a></p>
+            <p>And a <mark>mark<mark> in the text</p>
+            <p>Some stuff here</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="empty">
+          <div class="empty-icon">
+            <i class="icon icon-people"></i>
+          </div>
+          <p class="empty-title h5">You have no new messages</p>
+          <p class="empty-subtitle">Click the button to start a conversation.</p>
+          <div class="empty-action">
+            <button class="btn btn-primary">Send a message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vspace"></div>
+
+  <div class="container">
+    <div class="columns">
+      <div class="column col-3">
+        <div class="box">
+          <h2>Menu</h2>
+          <ul class="menu">
+            <!-- menu header text -->
+            <li class="divider" data-content="LINKS">
+            </li>
+            <!-- menu item -->
+            <li class="menu-item">
+              <a href="#">
+                <i class="icon icon-link"></i> Slack
+              </a>
+            </li>
+            <!-- menu divider -->
+            <li class="divider"></li>
+            <!-- menu item with badge -->
+            <li class="menu-item">
+              <div class="menu-badge">
+                <label class="label label-primary">2</label>
+              </div>
+              <a href="#">
+                <i class="icon icon-link"></i> Settings
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="box">
+          <h2>Main Content</h2>
+          <div class="box-body">
+            <p>Some stuff here</p>
+            <button class="btn">default button</button>
+            <button class="btn btn-primary">primary button</button>
+            <button class="btn btn-link">link button</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>Form Elements</h2>
+      <div class="box-body">
+        <form>
+          <div class="form-group">
+            <label><input class="form-input" type="email" placeholder="Email"></label>
+          </div>
+          <div class="form-group">
+            <label><input class="form-input" type="password" placeholder="Password"></label>
+          </div>
+          <div class="form-group">
+            <label>
+              <select class="form-select">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
+                <option>Option 5</option>
+                <option>Option 6</option>
+              </select>
+            </label>
+          </div>
+          <div class="form-group">
+            <label><input type="file" placeholder="Select a File..."></label>
+          </div>
+          <fieldset>
+            <legend>A &lt;fieldset&gt; control with a legend</legend>
+            <div class="form-group">
+              <label class="form-checkbox">
+                <input type="checkbox">
+                <i class="form-icon"></i> I certify that I am not a robot
+              </label>
+            </div>
+            <div class="form-group">
+              Pet Preference:
+              <label class="form-radio">
+                <input type="radio" name="pet" value="cat">
+                <i class="form-icon"></i> Cats
+              </label>
+              <label class="form-radio"><input type="radio" name="pet" value="dog" checked>
+                <i class="form-icon"></i> Dogs
+              </label>
+            </div>
+          </fieldset>
+          <div class="form-group">
+            <textarea class="form-input" placeholder="Textarea"></textarea>
+          </div>
+          <div class="form-group">
+            <label><button type="submit" class="btn btn-primary">Submit</button></label>
+            <label><button type="submit" class="btn">Other</button></label>
+            <label><button type="reset" class="btn btn-link">Cancel</button></label>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>Code Box</h2>
+      <div class="box-body">
+        <pre class="code" data-lang="JavaScript"><code>
+'use strict';
+
+const crypto = require('crypto');
+
+const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY; // Must be 256 bytes (32 characters)
+const IV_LENGTH = 16; // For AES, this is always 16
+
+function encrypt(text) {
+  let iv = crypto.randomBytes(IV_LENGTH);
+  let cipher = crypto.createCipheriv('aes-256-cbc', new Buffer(ENCRYPTION_KEY), iv);
+  let encrypted = cipher.update(text);
+
+  encrypted = Buffer.concat([encrypted, cipher.final()]);
+
+  return iv.toString('hex') + ':' + encrypted.toString('hex');
+}
+
+function decrypt(text) {
+  let textParts = text.split(':');
+  let iv = new Buffer(textParts.shift(), 'hex');
+  let encryptedText = new Buffer(textParts.join(':'), 'hex');
+  let decipher = crypto.createDecipheriv('aes-256-cbc', new Buffer(ENCRYPTION_KEY), iv);
+  let decrypted = decipher.update(encryptedText);
+
+  decrypted = Buffer.concat([decrypted, decipher.final()]);
+
+  return decrypted.toString();
+}
+
+module.exports = { decrypt, encrypt };
+        </code></pre>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

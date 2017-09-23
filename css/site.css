@@ -81,6 +81,7 @@ header.navbar .btn {
 /* menu */
 .menu {
   background-color: inherit;
+  box-shadow: none;
 }
 
 /* forms */
